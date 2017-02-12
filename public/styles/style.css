@@ -1,8 +1,22 @@
+.company-logo{
+  float: right;
+  font-size: 10px;
+  bottom: 0;
+  position: fixed;
+}
+.logo{
+  font-family: 'Oleo Script', cursive;
+  font-size: 100px;
+  text-align: center;
+  margin-top: 150px;
+}
 .form-submission{
   text-align: center;
-  margin-top: 40px;
+  margin-top: 100px;
 }
-
+.upload-button{
+  margin-top:30px;
+}
 .btn-file {
     margin-left: 40%;
     position: relative;
