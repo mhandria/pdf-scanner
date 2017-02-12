@@ -1,5 +1,3 @@
-
-
 //event listner to execute a function when
 //window has loaded
 window.onload = function () {
