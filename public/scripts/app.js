@@ -19,8 +19,9 @@ function refresh(){
     console.log(obj.length);
 
     for(let i = 0; i < obj.length; i++){
-       document.getElementById("text-content").innerHTML =  document.getElementById("text-content").innerHTML + "<br>" + obj[i];
-    } 
+      if(obj[i])
+       document.getElementById("info-table").innerHTML =  document.getElementById("info-table").innerHTML+ "<tr> <td>"+ obj[i] + "</td> <td>" + obj[++i] +"</td> </tr >";
+    }
   })
 }
 
