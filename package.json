@@ -1,0 +1,12 @@
+{
+  "name": "PDF_Swiper",
+  "version": "0.0.0",
+  "description": "PDF_Swiper",
+  "main": "server.js",
+  "author": {
+    "name": "Daniel"
+  },
+  "dependencies": {
+    "pdf2json": "*"
+  }
+}
