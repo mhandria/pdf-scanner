@@ -3,6 +3,7 @@
 //event listner to execute a function when
 //window has loaded
 window.onload = function () {
+  var obj, events;
   //execute resfresh method when window has loaded
   refresh();
 };
@@ -14,13 +15,13 @@ function refresh(){
   httpGetAsync("http://localhost:3000/array", function(responseText){
 
     //parse the incoming
-    var obj = JSON.parse(responseText);
+    obj = JSON.parse(responseText);
     console.log(obj);
-    console.log(obj.length);
+    events = find();
 
-    for(let i = 0; i < obj.length; i++){
-      if(obj[i])
-       document.getElementById("info-table").innerHTML =  document.getElementById("info-table").innerHTML+ "<tr> <td>"+ obj[i] + "</td> <td>" + obj[++i] +"</td> </tr >";
+    for(let i = 0; i < events.length; i++){
+      if(events[i])
+       document.getElementById("info-table").innerHTML =  document.getElementById("info-table").innerHTML+ "<tr> <td>"+ events[i] + "</td> <td>" + events[++i] +"</td> </tr >";
     }
   })
 }
@@ -37,4 +38,41 @@ function httpGetAsync(theUrl, callback){
   }
   xhr.open("GET", theUrl, true);
   xhr.send(null);
+}
+
+function find() {
+  var events = new Array();
+  for(var i = 0; i < obj.length; i++) {
+    // We have found a date
+    if(isDate(obj[i])) {
+      // Save it in the correct format
+      var monthDay = obj[i].split("/");
+      for(var j = 0; j < 2; j++)
+        if(monthDay[j].length == 1) monthDay[j] = 0 + "" + monthDay[j];
+      var date = monthDay[0] + "/" + monthDay[1] + "/" + new Date().getFullYear();
+      events[events.length] = date;
+
+      // Write everything after the date
+      var text = "";
+      i++;
+      while(!isDate(obj[i+1]) && !isDate(obj[i]) && i < obj.length) {
+        if(obj[i] === "----------------Page") i+=3;
+        text = text + obj[i] + " ";
+        i++;
+      }
+
+      if(!text) events[events.length] = "-";
+      else events[events.length] = text;
+    }
+  }
+  return events;
+}
+
+function isDate(str) {
+  return containsRegex(str, /^\d{1}\/\d{1}/) || containsRegex(str, /^\d{1}\/\d{2}/) || containsRegex(str, /^\d{2}\/\d{1}/) || containsRegex(str, /^\d{2}\/\d{2}/);
+}
+
+function containsRegex(str, regex) {
+  if(str && str.search(regex) > -1) return true;
+  return false;
 }
