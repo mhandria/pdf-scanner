@@ -1,0 +1,31 @@
+.form-submission{
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn-file {
+    margin-left: 40%;
+    position: relative;
+    overflow: hidden;
+    -webkit-user-select: none;
+}
+.btn-filet:hover, .btn-file:focus, .btn-file:active {
+    border: none;
+    box-shadow: none;
+ }
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}

@@ -1,3 +1,5 @@
+
+
 //event listner to execute a function when
 //window has loaded
 window.onload = function () {
@@ -10,13 +12,15 @@ function refresh(){
 
   //call httpGetAsync method
   httpGetAsync("http://localhost:3000/array", function(responseText){
+
+    //parse the incoming
     var obj = JSON.parse(responseText);
     console.log(obj);
     console.log(obj.length);
 
     for(let i = 0; i < obj.length; i++){
        document.getElementById("text-content").innerHTML =  document.getElementById("text-content").innerHTML + "<br>" + obj[i];
-    }
+    } 
   })
 }
 

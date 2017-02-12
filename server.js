@@ -55,9 +55,12 @@ app.get('/array', function(req, res){
 //           upload, expecting a "pdfFile" name from front-end.
 //  @third: callback function
 app.post('/upload', upload.single("pdfFile"), function(req, res){
-
   //set the grabbed file into a variable named file
   var file = req.file;
+
+  if(file == undefined){
+    res.status(404).send("FILE NOT FOUND");
+  }
 
   //load file path into a pdfParser
   pdfParser.loadPDF(file.path);
