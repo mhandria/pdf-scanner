@@ -1,5 +1,5 @@
 # PDF Scanner
-> Stress Less, Remember More
+> Stress Less, Remember More. Created at Hackpoly 2017!
 
 This project is designed to scan school syllabuses and beautifully render key dates and assignments in your browser. We believe that this will allow students to become more organized and successful.
 
