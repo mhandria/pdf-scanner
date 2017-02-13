@@ -17,5 +17,5 @@ This project is designed to scan school syllabuses and beautifully render key da
 
 ## Run
 - <code> node server.js </code>
-- Navigate to http://localhost:3000/
+- Navigate to [http://localhost:3000/](http://localhost:3000)
 - Upload a syllabus in PDF format and see your organized schedule!
