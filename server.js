@@ -9,6 +9,7 @@ var path = require('path');
 var multer = require('multer');
 var upload = multer({dest:'upload/'});
 
+
 //declare pdf2json api.
 var fs = require('fs'),
     PDFParser = require("pdf2json");
@@ -16,6 +17,8 @@ var fs = require('fs'),
 
 //initialize pdf2json parser to grab pdf text content as raw
 var pdfParser = new PDFParser(this, 1);
+//depending on what comes back from pdfParser execute different functions
+
 
 
 //initialize an array of someArray
@@ -39,11 +42,10 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 //  @first: path
 //  @second: callback function/ function
 app.get('/array', function(req, res){
-
-  //sends http response, can be combined with
-  //res.status(number code ex: 404).send("messge")
   res.send(textArray);
 })
+
+
 
 //post is a HTTP method route
 //Routes HTTP POST requrests a specified path with the specified
@@ -54,8 +56,7 @@ app.get('/array', function(req, res){
 //  @second: uses multer that will save one file into a subdirectory of
 //           upload, expecting a "pdfFile" name from front-end.
 //  @third: callback function
-app.post('/upload', upload.single("pdfFile"), function(req, res){
-  //set the grabbed file into a variable named file
+app.post('/upload',  upload.single("pdfFile"), function(req, res, next){
   var file = req.file;
 
   if(file == undefined){
@@ -64,18 +65,18 @@ app.post('/upload', upload.single("pdfFile"), function(req, res){
 
   //load file path into a pdfParser
   pdfParser.loadPDF(file.path);
-
-  //depending on what comes back from pdfParser execute different functions
-  pdfParser.on("pdfParser_dataError", errData => console.error(errData.parserError));
-  pdfParser.on("pdfParser_dataReady", pdfData => {
-
-      //split the raw text into strings and store into an array
-      textArray = pdfParser.getRawTextContent().split(/\s+/);
-
-      //redirect the user into a home.html
-      res.redirect('/home.html');
+  //envoke once then delete the event so that there won't be double callbacks.
+  pdfParser.once("pdfParser_dataError", errData => console.error(errData.parserError));
+  pdfParser.once("pdfParser_dataReady", pdfData => {
+    textArray = pdfParser.getRawTextContent().split(/\s+/);
+    res.redirect('/home.html');
   });
-})
+
+});
+
+
+
+
 
 //this is used to listen to port 3000 and post a "message" on console when
 //server.js (this file) is ran.

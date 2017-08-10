@@ -13,14 +13,14 @@
 
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
+
 </head>
 
 <body>
-
   <div class="form-submission">
     <form action="/upload" method="post" enctype="multipart/form-data">
       <input class="btn btn-lg btn-file" id="pdfFile"  type="file" name="pdfFile"/>
-      <input class="btn btn-success btn-lg upload-button" type="submit" value="upload"/>
+      <input class="btn btn-success btn-lg upload-button" type="submit" value="upload" onclick="sendfile()"/>
     </form>
   </div>
   <div class="logo">
@@ -30,6 +30,7 @@
   <div class="company-logo">
     Epicenter Technology
   </div>
+  <script src="./scripts/file.js"></script>
 </body>
 
 </html>

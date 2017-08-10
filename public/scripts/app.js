@@ -1,5 +1,4 @@
 
-
 //event listner to execute a function when
 //window has loaded
 window.onload = function () {
@@ -14,6 +13,7 @@ function refresh(){
   //call httpGetAsync method
   httpGetAsync("http://localhost:3000/array", function(responseText){
 
+
     //parse the incoming
     obj = JSON.parse(responseText);
     console.log(obj);
@@ -23,7 +23,7 @@ function refresh(){
       if(events[i])
        document.getElementById("info-table").innerHTML =  document.getElementById("info-table").innerHTML+ "<tr> <td>"+ events[i] + "</td> <td>" + events[++i] +"</td> </tr >";
     }
-  })
+  });
 }
 
 //http Get asynchronously method.
@@ -32,6 +32,7 @@ function httpGetAsync(theUrl, callback){
   //set a new XML Http request variable
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function(){
+    console.log(xhr);
     if(xhr.readyState == 4 && xhr.status == 200){
       callback(xhr.responseText);
     }
@@ -40,6 +41,8 @@ function httpGetAsync(theUrl, callback){
   xhr.send(null);
 }
 
+
+//regex algorithm
 function find() {
   var events = new Array();
   for(var i = 0; i < obj.length; i++) {
