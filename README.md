@@ -19,3 +19,6 @@ This project is designed to scan school syllabuses and beautifully render key da
 - <code> node server.js </code>
 - Navigate to [http://localhost:3000/](http://localhost:3000)
 - Upload a syllabus in PDF format and see your organized schedule!
+
+## Contributers:
+Author: Michael Handria (Steven McCracken, Danny Olivera)
