@@ -1,13 +1,14 @@
 {
-  "name": "pdf2json-test",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "PDF_Scanner",
+  "version": "1.0.1",
+  "description": "scan through pdf and search for a tupple information of dates and descriptions",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Michael Ganda Handria",
+  "license": "MIT",
   "dependencies": {
     "commander": "^2.9.0",
     "content-disposition": "^0.5.2",
