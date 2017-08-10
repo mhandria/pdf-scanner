@@ -21,4 +21,4 @@ This project is designed to scan school syllabuses and beautifully render key da
 - Upload a syllabus in PDF format and see your organized schedule!
 
 ## Contributers:
-Author: Michael Handria (Steven McCracken, Danny Olivera)
+Author: Michael Handria, Steven McCracken, Danny Olivera
